@@ -131,8 +131,30 @@ public class Student {
                     break;
                 case 5:
                     System.out.println("Delete student");
+                    System.out.println("Delete student");
+                    System.out.println("Enter the admission number: ");
+                    String admn = input.next();
+
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb", "root", "");
+                        String sql = " DELETE FROM `students` WHERE `admnunmber` =  " + admn;
+                        Statement stmt = con.createStatement();
+                        stmt.executeUpdate(sql);
+                        System.out.println("Data deleted successfully.");
+                    }
+                    catch (Exception e){
+                        System.out.println(e);
+                    }
+
+                    break;
                 case 6:
                     System.out.println("Exit");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Enter correct value");
+
             }
         }
     }
