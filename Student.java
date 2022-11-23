@@ -58,7 +58,7 @@ public class Student {
                         while (rs.next()){
                             String getName = rs.getString("name");
                             String getRoll = rs.getString("rollnumber");
-                            String getAdm = rs.getString("admno");
+                            String getAdm = rs.getString("admnumber");
                             String getCollege = rs.getString("college");
                             System.out.println("Name="+getName);
                             System.out.println("Rollno="+getRoll);
@@ -74,6 +74,36 @@ public class Student {
                     break;
                 case 3:
                     System.out.println("Search student");
+                    System.out.println("Enter the admission number: ");
+                    admnum = input.nextInt();
+
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb", "root", "");
+                        String sql = "SELECT `name`, `rollnumber`, `admnumber`, `college` FROM `students` WHERE `admnumber` = "+String.valueOf(admnum);
+
+                        Statement stmt = con.createStatement();
+                        ResultSet rs = stmt.executeQuery(sql);
+                        while (rs.next()){
+                            String getName = rs.getString("name");
+                            String getRoll = rs.getString("rollnumber");
+                            String getAdm = rs.getString("admnumber");
+                            String getCollege = rs.getString("college");
+                            System.out.println("Name="+getName);
+                            System.out.println("Rollno="+getRoll);
+                            System.out.println("Admission No="+getAdm);
+                            System.out.println("College="+getCollege+"\n");
+
+                        }
+
+
+                    }
+                    catch (Exception e){
+                        System.out.println(e);
+                    }
+
+
+                    break;
                 case 4:
                     System.out.println("Update student");
                 case 5:
