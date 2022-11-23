@@ -1,6 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.Scanner;
 
 public class Student {
@@ -51,6 +49,29 @@ public class Student {
 
                 case 2:
                     System.out.println("View all student");
+                    try{
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb","root","");
+                        String sql = "SELECT `name`, `rollnumber`, `admnumber`, `college` FROM `students` ";
+                        Statement stmt = con.createStatement();
+                        ResultSet rs = stmt.executeQuery(sql);
+                        while (rs.next()){
+                            String getName = rs.getString("name");
+                            String getRoll = rs.getString("rollnumber");
+                            String getAdm = rs.getString("admno");
+                            String getCollege = rs.getString("college");
+                            System.out.println("Name="+getName);
+                            System.out.println("Rollno="+getRoll);
+                            System.out.println("Admission No="+getAdm);
+                            System.out.println("College="+getCollege+"\n");
+
+                        }
+
+                    }
+                    catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
                 case 3:
                     System.out.println("Search student");
                 case 4:
