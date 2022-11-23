@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Student {
+    public static void main(String[] args) {
+        int choice;
+        Scanner input = new Scanner(System.in);
+        String name, college;
+        int rollno, admnum;
+
+
+        while (true) {
+            System.out.println("Select an option from below");
+            System.out.println("1.Add Student ");
+            System.out.println("2.View all  Student ");
+            System.out.println("3.Search a Student ");
+            System.out.println("4.Update a Student ");
+            System.out.println("5.Delete a Student ");
+            System.out.println("6.Exit ");
+            System.out.println("Enter your choice:  ");
+            choice = input.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Add student");
+                case 2:
+                    System.out.println("View all student");
+                case 3:
+                    System.out.println("Search student");
+                case 4:
+                    System.out.println("Update student");
+                case 5:
+                    System.out.println("Delete student");
+                case 6:
+                    System.out.println("Exit");
+            }
+        }
+    }
+}
+
