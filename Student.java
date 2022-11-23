@@ -3,6 +3,13 @@ import java.util.Scanner;
 
 public class Student {
     public static void main(String[] args) {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb","root","");
+        }
+        catch (Exception e){
+            System.out.println((e));
+        }
         int choice;
         Scanner input = new Scanner(System.in);
         String name, college;
@@ -138,7 +145,7 @@ public class Student {
                     try {
                         Class.forName("com.mysql.jdbc.Driver");
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentdb", "root", "");
-                        String sql = " DELETE FROM `students` WHERE `admnunmber` =  " + admn;
+                        String sql = " DELETE FROM `students` WHERE `admnumber` =  " + admn;
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate(sql);
                         System.out.println("Data deleted successfully.");
